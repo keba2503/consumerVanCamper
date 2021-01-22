@@ -14,18 +14,22 @@ function eventListeners() {
 
 
 class Generacion {
-    constructor(){
+    constructor() {
         this.dispositivos = [];
-        this.generado = Number(generado);
-            
+        this.suma;
     }
 
     nuevoDispositivo(dispositivo) {
-        this.dispositivos = [...this.dispositivos, dispositivo ];
-       
+        this.dispositivos = [...this.dispositivos, dispositivo];
+        this.prueba();
     }
 
- 
+    prueba() {
+        const totaling = this.dispositivos;
+        const totaling2 = (totaling[0]);
+        this.suma = (totaling2.cantidad * totaling2.potencia / 12) * totaling2.horas;     
+    }
+
 }
 
 
@@ -57,61 +61,58 @@ class UI {
     }
 
 
-       //Agregar nuevo dispositivo de generacion
+    //Agregar nuevo dispositivo de generacion
 
-       agregarGeneracionListado(dispositivos) {
+    agregarGeneracionListado(dispositivos) {
         // this.limpiarHTML();
 
         //iterar sobre los gastos
-        
-        dispositivos.forEach(dispositivo => {
-            const { nombre, cantidad, potencia, horas, id} = dispositivo;
 
-        
+        dispositivos.forEach(dispositivo => {
+            const { nombre, cantidad, potencia, horas, id } = dispositivo;
+
             const row = document.createElement('tr');
 
-   //Boton para borrar el gasto
+            //Boton para borrar el gasto
             const boton = document.createElement('li')
             const btnBorrar = document.createElement('button');
             btnBorrar.classList.add('btn', 'btn-danger');
             btnBorrar.setAttribute("type", "button");
-            btnBorrar.innerHTML = 'Borrar &times';    
+            btnBorrar.innerHTML = 'Borrar &times';
             boton.appendChild(btnBorrar);
-            botonEliminar.appendChild(boton);               
-        
+            botonEliminar.appendChild(boton);
 
-        
-
-        row.innerHTML =
-       `<td>${cantidad}</td>
+            row.innerHTML =
+                `<td>${cantidad}</td>
         <td>${nombre}</td>
         <td>${potencia}</td>
         <td>${horas}</td>
              `;
 
-         
-    
-        //Adding html to the cart container
-        listado.appendChild(row);
+
+
+            //Adding html to the cart container
+            listado.appendChild(row);
 
         });
     }
 
-    // sumarGeneracion(sumarGenerado) {
+    actualizargeneracion(suma) {
 
-    //     document.querySelector('#suma-dispositivo').textContent = sumarGenerado;
-        
-       
-    // }
+        const sumado = suma.toFixed(2);
+        const totales = document.createElement('li')
+        totales.classList.add('lista-totales');
+        totales.innerHTML = `${sumado}`;
+        total.appendChild(totales)
 
+    }
 }
 
 
 const ui = new UI();
-
-
-
 let generacion;
+let suma;
+
 
 //Funciones
 
@@ -147,49 +148,17 @@ function agregarGeneracion(e) {
     //añade nueva generacion
     generacion.nuevoDispositivo(dispositivo);
 
-    
+
     // generacion.nuevoDispositivo(dispositivo);
     ui.imprimirAlerta('Generacion agregada correctamente');
 
     //Imprimir lista de generacion
-    const { dispositivos } = generacion;
-    
+    const { dispositivos, suma } = generacion;
     ui.agregarGeneracionListado(dispositivos);
 
-    // console.log(dispositivos)
-
-   ///Pruebas
-
-   let suma;
-
-function sumarGeneracion() {
-        
-    suma = (cantidad * potencia / 12) * horas;
-}
-
-
-sumarGeneracion();
-
-
-
-function actualizargeneracion() {
-
-    const sumado =  suma.toFixed(2); 
-
-
-    const totales = document.createElement('li')
-    totales.classList.add('lista-totales');
-
-    
-    totales.innerHTML = `${sumado}`;    
-total.appendChild(totales) 
- 
-  
-
-
-}
-
-actualizargeneracion();
+    //Imprimir Totales de cada dispositivo
+    generacion.prueba()
+    ui.actualizargeneracion(suma);
 
 }
 
