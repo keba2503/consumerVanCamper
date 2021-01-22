@@ -27,7 +27,7 @@
         <form action="" id="generacion" class="centerform">
 
             <div class="consumerTitle">
-                <h2>Generacion</h2>
+                <h2>Consumo</h2>
             </div>
 
             <div class="container centerform">
@@ -59,13 +59,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Corriente:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="corriente">
-                            </div>
-                        </div>
-
+                       
                         <div class="mb-3 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Horas:</label>
                             <div class="col-sm-10">
@@ -84,7 +78,7 @@
             <div class="list-group">
 
                 <div class>
-                    <li class="list-group-item active" aria-current="true">Lista de consumo</li>
+                    <li class="list-group-item active" aria-current="true">Lista de Consumo</li>
                 </div>
 
                 <br>
@@ -102,7 +96,8 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Potencia</th>
                                     <th scope="col">Horas</th>
-                                    <th scope="col">Corriente</th>
+                                    
+                                   
                                     
                                   </tr>
                                 </thead>
@@ -112,20 +107,17 @@
                               </table>
                         </div>
                       </div>
+                      <div class="col-sm " >
+                        <div><h5>Totales</h5></div>
+                            <div id="suma-dispositivo">
+                            <ul></ul>
+                        </div>
+                      </div>
+
                       <div class="col-sm">
-                        <div id="boton-eliminar">
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Eliminar</th>
-                                    
-                                    
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                 
-                                </tbody>
-                              </table>
+                        <div><h5>Eliminar</h5></div>
+                            <div id="boton-eliminar">
+                            <ul></ul>
                         </div>
                       </div>
                      
@@ -139,8 +131,8 @@
             <div class="list-group">
 
                 <br>
-                <div class="restante alert alert-success">
-                    <p> Suma al día : (Ah)<span id="restante"></span></p>
+                <div class="restante alert alert-danger">
+                    <p> Suma al día : (Ah)<span id="generado"></span></p>
                 </div>
 
             </div>

@@ -1,7 +1,8 @@
 //Selectors
 const formularioGeneracion = document.querySelector('#generacion');
 const listado = document.querySelector('#listado-generacion tbody')
-const botonEliminar = document.querySelector('#boton-eliminar tbody')
+const botonEliminar = document.querySelector('#boton-eliminar ul')
+const total = document.querySelector('#suma-dispositivo');
 
 //Eventos
 eventListeners();
@@ -15,17 +16,16 @@ function eventListeners() {
 class Generacion {
     constructor(){
         this.dispositivos = [];
+        this.generado = Number(generado);
+            
     }
 
     nuevoDispositivo(dispositivo) {
         this.dispositivos = [...this.dispositivos, dispositivo ];
-        this.sumarGeneracion();
+       
     }
 
-    sumarGeneracion() {
-        const generado = this.dispositivos.reduce((total, dispositivo) => total + dispositivo.cantidad, 0);
-        this.sumarGenerado = generado;
-    }
+ 
 }
 
 
@@ -65,28 +65,13 @@ class UI {
         //iterar sobre los gastos
         
         dispositivos.forEach(dispositivo => {
-            const { nombre, cantidad, potencia, corriente, horas, id} = dispositivo;
+            const { nombre, cantidad, potencia, horas, id} = dispositivo;
 
-            //Crear un LI
-
-            // const nuevaGeneracion = document.createElement('li');
-            // nuevaGeneracion.className = 'list-group-item d-flex justify-content-between align-items-center';
-            // nuevaGeneracion.dataset.id = id;
-
-            // //Agregar el HTML gasto
-            // nuevaGeneracion.innerHTML = ` Dispositivo:
-            // ${nombre}  - Cantidad: ${cantidad} 
-            // `;
-
-         
-
-            // //Agregar el html
-            // listado.appendChild(nuevaGeneracion);
-
+        
             const row = document.createElement('tr');
 
    //Boton para borrar el gasto
-            const boton = document.createElement('tr')
+            const boton = document.createElement('li')
             const btnBorrar = document.createElement('button');
             btnBorrar.classList.add('btn', 'btn-danger');
             btnBorrar.setAttribute("type", "button");
@@ -102,8 +87,7 @@ class UI {
         <td>${nombre}</td>
         <td>${potencia}</td>
         <td>${horas}</td>
-        <td>${corriente}</td>
-        `;
+             `;
 
          
     
@@ -113,10 +97,18 @@ class UI {
         });
     }
 
+    // sumarGeneracion(sumarGenerado) {
+
+    //     document.querySelector('#suma-dispositivo').textContent = sumarGenerado;
+        
+       
+    // }
+
 }
 
 
 const ui = new UI();
+
 
 
 let generacion;
@@ -132,14 +124,13 @@ function agregarGeneracion(e) {
 
     //leer datos para validacion de formulario
     const nombre = document.querySelector('#nombre').value;
-    const cantidad = document.querySelector('#cantidad').value;
-    const potencia = document.querySelector('#potencia').value;
-    const corriente = document.querySelector('#corriente').value;
-    const horas = document.querySelector('#horas').value;
+    const cantidad = Number(document.querySelector('#cantidad').value);
+    const potencia = Number(document.querySelector('#potencia').value);
+    const horas = Number(document.querySelector('#horas').value);
 
 
     // Comprobar que los campos no esten vacios
-    if (nombre === '' || cantidad === '' || potencia === '' || corriente === '' || horas === '') {
+    if (nombre === '' || cantidad === '' || potencia === '' || horas === '') {
         // 2 parametros: mensaje y tipo
         ui.imprimirAlerta('Todos los campos son obligatorios', 'error');
 
@@ -151,21 +142,55 @@ function agregarGeneracion(e) {
 
     //Generar objeto con la generacion
 
-    const dispositivo = { nombre, cantidad, potencia, corriente, horas, id: Date.now() };
+    const dispositivo = { nombre, cantidad, potencia, horas, id: Date.now() };
 
     //añade nueva generacion
     generacion.nuevoDispositivo(dispositivo);
 
     
     // generacion.nuevoDispositivo(dispositivo);
-    ui.imprimirAlerta('Gasto agregado correctamente');
+    ui.imprimirAlerta('Generacion agregada correctamente');
 
     //Imprimir lista de generacion
     const { dispositivos } = generacion;
     
     ui.agregarGeneracionListado(dispositivos);
-    
+
+    // console.log(dispositivos)
+
+   ///Pruebas
+
+   let suma;
+
+function sumarGeneracion() {
+        
+    suma = (cantidad * potencia / 12) * horas;
 }
 
+
+sumarGeneracion();
+
+
+
+function actualizargeneracion() {
+
+    const sumado =  suma.toFixed(2); 
+
+
+    const totales = document.createElement('li')
+    totales.classList.add('lista-totales');
+
+    
+    totales.innerHTML = `${sumado}`;    
+total.appendChild(totales) 
+ 
+  
+
+
+}
+
+actualizargeneracion();
+
+}
 
 

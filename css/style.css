@@ -43,6 +43,22 @@ body {
    margin-bottom: 2rem;
 }
 
-.btn {
+li {
+
+  list-style: none;
+  margin-bottom: 0.4rem;
+  /* padding: 1px; */
     
+    
+    
+}
+
+ul {
+    margin-top: 1.2rem;
+    padding: 0;
+}
+
+.lista-totales {
+    margin-top: 1.3rem;
+
 }
