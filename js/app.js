@@ -2,7 +2,7 @@
 const formularioGeneracion = document.querySelector('#generacion');
 const listado = document.querySelector('#listado-generacion tbody')
 const botonEliminar = document.querySelector('#boton-eliminar ul')
-const total = document.querySelector('#suma-dispositivo');
+const total = document.querySelector('#suma-dispositivo tbody');
 
 //Eventos
 eventListeners();
@@ -85,9 +85,7 @@ class UI {
             row.innerHTML =
                 `<td>${cantidad}</td>
         <td>${nombre}</td>
-        <td>${potencia}</td>
-        <td>${horas}</td>
-             `;
+                         `;
 
 
 
@@ -100,9 +98,9 @@ class UI {
     actualizargeneracion(suma) {
 
         const sumado = suma.toFixed(2);
-        const totales = document.createElement('li')
+        const totales = document.createElement('tr')
         totales.classList.add('lista-totales');
-        totales.innerHTML = `${sumado}`;
+        totales.innerHTML =  `<td>${sumado}</td> `;
         total.appendChild(totales)
 
     }
