@@ -18,6 +18,7 @@
 </body>
 
 <body>
+    <div class="container2">
     <div class="container2" id="autonomy">
 
         <div class="center">
@@ -27,7 +28,7 @@
         <form action="" id="generacion" class="centerform">
 
             <div class="consumerTitle">
-                <h2>Consumo</h2>
+                <h2>Generacion</h2>
             </div>
 
             <div class="container centerform">
@@ -78,7 +79,7 @@
             <div class="list-group">
 
                 <div class>
-                    <li class="list-group-item active" aria-current="true">Lista de Consumo</li>
+                    <li class="list-group-item active" aria-current="true">Lista de generacion</li>
                 </div>
 
                 <br>
@@ -107,7 +108,7 @@
                             <table class="table">
                                 <thead>
                                   <tr>
-                                    <th scope="col">Consumo(Ah)</th>
+                                    <th scope="col">Generacion diaria</th>
                                                                                                          
                                   </tr>
                                 </thead>
@@ -135,7 +136,7 @@
             <div class="list-group">
 
                 <br>
-                <div class="restante alert alert-danger">
+                <div class="restante alert alert-success">
                     <p> Suma al día : (Ah)<span id="generado"></span></p>
                 </div>
 
@@ -143,7 +144,132 @@
 
         </div>
 
+      
+       
 
+        <!-- Consumo -->
+
+           
+    
+            <form action="" id="consumo" class="centerform2">
+    
+                <div class="consumerTitle">
+                    <h2>Consumo</h2>
+                </div>
+    
+                <div class="container centerform">
+    
+                    <div class="row">
+    
+                        <div class="col-sm">
+    
+                            <div class="primario2"> </div>
+    
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Dispositivo:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="nombre-consumo">
+                                </div>
+                            </div>
+    
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Cantidad</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="cantidad-consumo">
+                                </div>
+                            </div>
+    
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Potencia</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="potencia-consumo">
+                                </div>
+                            </div>
+    
+                           
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Horas:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="horas-consumo">
+                                </div>
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary boton">Agregar</button>
+    
+                        </div>
+            </form>
+    
+    
+            <div class="col-sm">
+    
+                <div class="list-group">
+    
+                    <div class>
+                        <li class="list-group-item active" aria-current="true">Lista de consumo</li>
+                    </div>
+    
+                    <br>
+    
+                
+    
+                    <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+                            <div id="listado-consumo">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Nombre</th>                                                                           
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                     
+                                    </tbody>
+                                  </table>
+                            </div>
+                          </div>
+                          <div class="col-sm " >
+                            <div id="suma-dispositivo-consumo">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Consumo diario</th>
+                                                                                                             
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                     
+                                    </tbody>
+                                  </table>
+                            </div>
+                          </div>
+    
+                          <div class="col-sm">
+                            <div><h5>Eliminar</h5></div>
+                                <div id="boton-eliminar-consumo">
+                                <ul></ul>
+                            </div>
+                          </div>
+                         
+                        </div>
+                      </div>
+    
+                </div>
+    
+                <br>
+    
+                <div class="list-group">
+    
+                    <br>
+                    <div class="restante alert alert-danger">
+                        <p> Suma al día : (Ah)<span id="consumido"></span></p>
+                    </div>
+    
+                </div>
+    
+            
+</div>
 
 
     </div>

@@ -69,7 +69,7 @@ class UI {
         //iterar sobre los gastos
 
         dispositivos.forEach(dispositivo => {
-            const { nombre, cantidad, potencia, horas, id } = dispositivo;
+            const { nombre, cantidad} = dispositivo;
 
             const row = document.createElement('tr');
 
@@ -99,7 +99,6 @@ class UI {
 
         const sumado = suma.toFixed(2);
         const totales = document.createElement('tr')
-        totales.classList.add('lista-totales');
         totales.innerHTML =  `<td>${sumado}</td> `;
         total.appendChild(totales)
 
@@ -159,5 +158,6 @@ function agregarGeneracion(e) {
     ui.actualizargeneracion(suma);
 
 }
+
 
 
