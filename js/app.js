@@ -34,16 +34,16 @@ class Generacion {
 
     nuevoDispositivo(dispositivo) {
         this.dispositivos = [...this.dispositivos, dispositivo];
-        this.calcularRestanteGeneracion();     
+        this.calcularRestanteGeneracion();
 
     }
 
     eliminarGeneracion(id) {
-        this.dispositivos = this.dispositivos.filter( dispositivo => dispositivo.id.toString() !== id );
+        this.dispositivos = this.dispositivos.filter(dispositivo => dispositivo.id.toString() !== id);
         this.calcularRestanteGeneracion();
     }
 
-   
+
 
     nuevoDispositivoConsumo(dispositivoConsumo) {
         this.dispositivosConsumo = [...this.dispositivosConsumo, dispositivoConsumo];
@@ -51,7 +51,7 @@ class Generacion {
     }
 
     eliminarConsumo(id) {
-        this.dispositivosConsumo = this.dispositivosConsumo.filter( dispositivoConsumo => dispositivoConsumo.id.toString() !== id );
+        this.dispositivosConsumo = this.dispositivosConsumo.filter(dispositivoConsumo => dispositivoConsumo.id.toString() !== id);
         this.calcularRestanteConsumo();
     }
 
@@ -105,13 +105,13 @@ class UI {
 
     agregarGeneracionListado(dispositivos) {
         this.limpiarHTML();
-        // this.limpiarHTMLBoton();
+
 
         //iterar sobre los gastos
 
         dispositivos.forEach(dispositivo => {
             const { nombre, cantidad, totalPrueba, id } = dispositivo;
-          
+
 
             const row = document.createElement('tr');
             row.dataset.id = id;
@@ -119,7 +119,8 @@ class UI {
             row.innerHTML =
                 `<td>${cantidad}</td>
         <td>${nombre}</td>
-        <td>${totalPrueba}</td>   `;
+        <td>${totalPrueba}</td>  
+        <td class="eliminar">Eliminar</td>    `;
 
 
 
@@ -127,8 +128,8 @@ class UI {
             listado.appendChild(row);
 
         });
-        
-    }    
+
+    }
 
     actualizarRestante(sumaGeneracion) {
 
@@ -138,7 +139,7 @@ class UI {
     limpiarHTML() {
         while (listado.firstChild) {
             listado.removeChild(listado.firstChild);
-   
+
         }
     }; 1200
 }
@@ -148,29 +149,30 @@ class UICONSUMO {
 
     agregarConsumoListado(dispositivosConsumo) {
         this.limpiarHTML();
-         
-    
+
+
         //iterar sobre los gastos
-    
+
         dispositivosConsumo.forEach(dispositivoConsumo => {
-            const { nombreConsumo, cantidadConsumo, totalPruebaConsumo, id} = dispositivoConsumo;
-    
+            const { nombreConsumo, cantidadConsumo, totalPruebaConsumo, id } = dispositivoConsumo;
+
             const row = document.createElement('tr');
             row.dataset.id = id;
-    
+
             row.innerHTML =
                 `<td>${cantidadConsumo}</td>
         <td>${nombreConsumo}</td>
         <td>${totalPruebaConsumo}</td>
+        <td class="eliminar">Eliminar</td>  
                          `;
-    
-    
-    
+
+
+
             //Adding html to the cart container
             listadoConsumo.appendChild(row);
-    
+
         });
-        
+
     }
 
     actualizarRestante(sumaConsumo) {
@@ -184,7 +186,7 @@ class UICONSUMO {
         }
     }; 1200
 
-   
+
 }
 
 const ui = new UI();
@@ -233,7 +235,7 @@ function agregarGeneracion(e) {
 
         formularioGeneracion.reset();
 
-   }
+    }
 
 
 }
@@ -245,9 +247,9 @@ function agregarGeneracion(e) {
 
 
 function agregarConsumo(e) {
-   e.preventDefault();
+    e.preventDefault();
 
-//     //leer datos para validacion de formulario
+    //     //leer datos para validacion de formulario
     const nombreConsumo = document.querySelector('#nombre-consumo').value;
     const cantidadConsumo = Number(document.querySelector('#cantidad-consumo').value);
     const potenciaConsumo = Number(document.querySelector('#potencia-consumo').value);
@@ -282,46 +284,46 @@ function agregarConsumo(e) {
 
         formularioConsumo.reset();
 
-   }
-
-
-    }
-
-    function eliminarGeneracion(e) {
-        
-            const { id } = e.target.parentElement.dataset;
-            generacion.eliminarGeneracion(id);
-            // Reembolsar
-       
-    
-            // Pasar la cantidad restante para actualizar el DOM
-            const { sumaGeneracion } = generacion;
-            ui.actualizarRestante(sumaGeneracion);
-    
-            // Eliminar del DOM
-            e.target.parentElement.remove();
-       
-
-        console.log('borrar');
     }
 
 
+}
 
+function eliminarGeneracion(e) {
 
-    function eliminarConsumo(e) {
-        
-        const { id } = e.target.parentElement.dataset;
-        consumo.eliminarConsumo(id);
+    if (e.target.classList.contains('eliminar')) {
+        const { id } = e.target.parentElement.dataset;
+        generacion.eliminarGeneracion(id);
         // Reembolsar
-   
+
 
         // Pasar la cantidad restante para actualizar el DOM
-        const { sumaConsumo } = consumo;
-        uiConsumo.actualizarRestante(sumaConsumo);
+        const { sumaGeneracion } = generacion;
+        ui.actualizarRestante(sumaGeneracion);
 
         // Eliminar del DOM
         e.target.parentElement.remove();
-   
+    }
+    
+}
+
+
+
+
+function eliminarConsumo(e) {
+
+    const { id } = e.target.parentElement.dataset;
+    consumo.eliminarConsumo(id);
+    // Reembolsar
+
+
+    // Pasar la cantidad restante para actualizar el DOM
+    const { sumaConsumo } = consumo;
+    uiConsumo.actualizarRestante(sumaConsumo);
+
+    // Eliminar del DOM
+    e.target.parentElement.remove();
+
 
     console.log('borrar');
 }

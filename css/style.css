@@ -1,5 +1,8 @@
 body {
     background-size: 100vw;
+    background-color: #DDDDDA;
+    font-family: 'Yusei Magic', sans-serif;
+ 
 }
 
 .center {
@@ -12,7 +15,7 @@ body {
 .centerform {
     text-align: center;
     color:black;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     
 }
 
@@ -30,40 +33,28 @@ body {
     background-color: white; 
     margin-top: 3rem;
     margin-inline: 5rem;    
-    border-style: double;
     border-radius: 1rem;
     box-shadow: 2px 2px 10px rgb(18, 17, 17);
     opacity: 0.9;
     margin-bottom: 1rem;
 }
 
-.gasto {
-    background-color: #0D6EFD;
-    color: cornsilk;
-    border-radius: 0.2rem;
-    padding: 0.4rem;
-}
 
-.boton {
-    margin-bottom: 1rem;
-}
+
 
 .consumerTitle {
    text-align: center;
    margin-bottom: 2rem;
 }
 
-li {
-
-  list-style: none;
-  margin-bottom: 0.4rem;
-  /* padding: 1px; */
-    
-    
-    
-}
 
 ul {
     margin-top: 1.2rem;
     padding: 0;
+}
+
+
+.eliminar {
+    color: red;
+    font-weight: bold;
 }
