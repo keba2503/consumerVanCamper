@@ -19,242 +19,232 @@
 
 <body>
     <div class="container2">
-    <div class="container2" id="autonomy">
+        <div class="container2" id="autonomy">
 
-        <div class="center">
-            <h1>Consumo electrico y autonomia de tu camperVan</h1>
-        </div>
-
-        <form action="" id="generacion" class="centerform">
-
-            <div class="consumerTitle">
-                <h2>Generacion</h2>
+            <div class="center">
+                <h1>Consumo electrico y autonomia de tu camperVan</h1>
             </div>
 
-            <div class="container centerform">
+            <form action="" id="generacion" class="centerform">
 
-                <div class="row">
-
-                    <div class="col-sm">
-
-                        <div class="primario"> </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Dispositivo:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nombre">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Cantidad</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="cantidad">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Potencia</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="potencia">
-                            </div>
-                        </div>
-
-                       
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Horas:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="horas">
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary boton">Agregar</button>
-
-                    </div>
-        </form>
-
-
-        <div class="col-sm">
-
-            <div class="list-group">
-
-                <div class>
-                    <li class="list-group-item active" aria-current="true">Lista de generacion</li>
+                <div class="consumerTitle">
+                    <h2>Generacion</h2>
                 </div>
 
-                <br>
+                <div class="container centerform">
 
-            
-
-                <div class="container">
                     <div class="row">
-                      <div class="col-sm">
-                        <div id="listado-generacion">
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Cantidad</th>
-                                    <th scope="col">Nombre</th>  
-                                    <th scope="col">Generacion</th>                                                                               
-                                  </tr>
-                                </thead>
-                                <tbody>                                 
-                                </tbody>
-                              </table>
-                        </div>
-                      </div>
 
-                     
-                      <div class="col-sm">
-                        <div><h5>Eliminar</h5></div>
-                            <div id="boton-eliminar">
-                            <ul></ul>
+                        <div class="col-sm">
+
+                            <div class="primario"> </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Dispositivo:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="nombre">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Cantidad</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="cantidad">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Potencia</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="potencia">
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Horas:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="horas">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary boton">Agregar</button>
+
                         </div>
-                      </div>
-                     
+            </form>
+
+
+            <div class="col-sm">
+
+                <div class="list-group">
+
+                    <div class>
+                        <li class="list-group-item active" aria-current="true">Lista de generacion</li>
                     </div>
-                  </div>
 
-            </div>
+                    <br>
 
-            <br>
 
-            <div class="list-group">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div id="listado-generacion">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Generacion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            
+
+                        </div>
+                    </div>
+
+                </div>
 
                 <br>
-                <div class="restante alert alert-success">
-                    <p> Suma al día : (Ah)<span id="generado"></span></p>
+
+                <div class="list-group">
+
+                    <br>
+                    <div class="restante alert alert-success">
+                        <p> Suma al día : (Ah)<span id="generado"></span></p>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
 
-      
-       
 
-        <!-- Consumo -->
 
-           
-    
+            <!-- Consumo -->
+
+
+
             <form action="" id="consumo" class="centerform2">
-    
+
                 <div class="consumerTitle">
                     <h2>Consumo</h2>
                 </div>
-    
+
                 <div class="container centerform">
-    
+
                     <div class="row">
-    
+
                         <div class="col-sm">
-    
+
                             <div class="primario2"> </div>
-    
+
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Dispositivo:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="nombre-consumo">
                                 </div>
                             </div>
-    
+
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Cantidad</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="cantidad-consumo">
                                 </div>
                             </div>
-    
+
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Potencia</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="potencia-consumo">
                                 </div>
                             </div>
-    
-                           
+
+
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Horas:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="horas-consumo">
                                 </div>
                             </div>
-    
+
                             <button type="submit" class="btn btn-primary boton">Agregar</button>
-    
+
                         </div>
             </form>
-    
-    
+
+
             <div class="col-sm">
-    
+
                 <div class="list-group">
-    
+
                     <div class>
                         <li class="list-group-item active" aria-current="true">Lista de consumo</li>
                     </div>
-    
+
                     <br>
-    
-                
-    
+
+
+
                     <div class="container">
                         <div class="row">
-                          <div class="col-sm">
-                            <div id="listado-consumo">
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">Cantidad</th>
-                                        <th scope="col">Nombre</th>  
-                                        <th scope="col">Consumo</th>  
-                                      </tr>
-                                    </thead>
-                                    <tbody>                                     
-                                    </tbody>
-                                  </table>
+                            <div class="col-sm">
+                                <div id="listado-consumo">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Consumo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                          </div>
-                         
-    
-                          <div class="col-sm">
-                            <div><h5>Eliminar</h5></div>
-                                <div id="boton-eliminar-consumo">
-                                <ul></ul>
-                            </div>
-                          </div>
-                         
+
+
+                            
+
                         </div>
-                      </div>
-    
+                    </div>
+
                 </div>
-    
+
                 <br>
-    
+
                 <div class="list-group">
-    
+
                     <br>
                     <div class="restante alert alert-danger">
                         <p> Suma al día : (Ah)<span id="consumido"></span></p>
                     </div>
-    
+
                 </div>
-    
-            
-</div>
 
 
-    </div>
+            </div>
+
+
+        </div>
 
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <script src="/js/app.js"></script>
+        <!-- Optional JavaScript; choose one of the two! -->
+        <script src="/js/app.js"></script>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
 
 
 </body>
