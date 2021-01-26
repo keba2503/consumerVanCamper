@@ -13,6 +13,15 @@ const listadoConsumo = document.querySelector('#listado-consumo tbody');
 const botonEliminarConsumo = document.querySelector('#boton-eliminar-consumo ul');
 const totalConsumido = document.querySelector('#consumido');
 
+//Resultados
+const printConsumo = document.querySelector('#print-consumo');
+const printGeneracion = document.querySelector('#print-generacion');
+const formularioTotales = document.querySelector("#totales");
+const capacidadBaterias = document.querySelector('#capacidad-bateria');
+
+
+
+
 //Eventos
 
 eventListeners();
@@ -20,9 +29,14 @@ eventListeners();
 function eventListeners() {
     formularioGeneracion.addEventListener('submit', agregarGeneracion);
     formularioConsumo.addEventListener('submit', agregarConsumo);
+    formularioTotales.addEventListener('click', capacidadBateria);
     listadoConsumo.addEventListener('click', eliminarConsumo);
     listado.addEventListener('click', eliminarGeneracion);
 }
+
+
+
+
 
 class Generacion {
     constructor() {
@@ -60,7 +74,7 @@ class Generacion {
         let total = 0;
         this.dispositivos.forEach(function (dispositivo) { total += dispositivo.totalPrueba; });
         this.sumaGeneracion = total;
-        console.log(this.sumaGeneracion)
+
     }
 
     calcularRestanteConsumo() {
@@ -68,7 +82,7 @@ class Generacion {
         let total = 0;
         this.dispositivosConsumo.forEach(function (dispositivoConsumo) { total += dispositivoConsumo.totalPruebaConsumo; });
         this.sumaConsumo = total;
-        console.log(this.sumaConsumo)
+
     }
 }
 
@@ -134,6 +148,8 @@ class UI {
     actualizarRestante(sumaGeneracion) {
 
         document.querySelector('#generado').textContent = sumaGeneracion;
+        printGeneracion.textContent = sumaGeneracion;
+        printGeneracion.value = sumaGeneracion;
     }
 
     limpiarHTML() {
@@ -178,7 +194,15 @@ class UICONSUMO {
     actualizarRestante(sumaConsumo) {
 
         document.querySelector('#consumido').textContent = sumaConsumo;
+
+        printConsumo.textContent = sumaConsumo;
+        printConsumo.value = sumaConsumo;
     }
+
+
+
+
+
 
     limpiarHTML() {
         while (listadoConsumo.firstChild) {
@@ -205,7 +229,7 @@ function agregarGeneracion(e) {
     const cantidad = Number(document.querySelector('#cantidad').value);
     const potencia = Number(document.querySelector('#potencia').value);
     const horas = Number(document.querySelector('#horas').value);
-    const consumicion = (cantidad * potencia / 12) * horas;
+    const consumicion = ((cantidad * potencia / 12) * horas) * 0.7;
     const totalPrueba = Number(consumicion.toFixed(2));
 
     // Comprobar que los campos no esten vacios
@@ -228,7 +252,7 @@ function agregarGeneracion(e) {
 
         //Imprimir lista de generacion
         const { dispositivos, sumaGeneracion } = generacion;
-        console.log(dispositivos);
+
         ui.agregarGeneracionListado(dispositivos);
 
         ui.actualizarRestante(sumaGeneracion);
@@ -277,7 +301,6 @@ function agregarConsumo(e) {
 
         //Imprimir lista de generacion
         const { dispositivosConsumo, sumaConsumo } = consumo;
-        console.log(dispositivosConsumo);
         uiConsumo.agregarConsumoListado(dispositivosConsumo);
 
         uiConsumo.actualizarRestante(sumaConsumo);
@@ -303,8 +326,10 @@ function eliminarGeneracion(e) {
 
         // Eliminar del DOM
         e.target.parentElement.remove();
+
+
     }
-    
+
 }
 
 
@@ -325,9 +350,47 @@ function eliminarConsumo(e) {
     e.target.parentElement.remove();
 
 
-    console.log('borrar');
+
 }
 
 
 
+function capacidadBateria() {
+
+
+    const { sumaConsumo } = consumo;
+    const { sumaGeneracion } = generacion;
+
+    const cantidadBaterias = Number(document.querySelector("#cantidad-bateria").value);
+    const totalGeneracion = printGeneracion.value = Number(sumaGeneracion);
+    const totalConsumo = printConsumo.value = Number(sumaConsumo);
+    const defitit = (totalGeneracion - totalConsumo).toFixed(2);
+
+    const capacidadBateriasNumero = Number(capacidadBaterias.value);
+    const cantidadGeneracionDiaria = Number(document.querySelector('#cantidadGeneracion').value);
+    const into = Number(document.querySelector("#in").value);
+
+    const cantidadConsumoDiaria = Number(document.querySelector('#cantidadConsumo').value);
+    const intoConsumo = Number(document.querySelector("#inConsumo").value);
+
+    const capacidadConsumo = ((cantidadConsumoDiaria * intoConsumo) / 12).toFixed(2);
+    const capacidadgeneracion = ((cantidadGeneracionDiaria * into) / 12).toFixed(2);
+    const capacidadCantidadBaterias = capacidadBateriasNumero * cantidadBaterias;
+  
+
+    const dias =  (((capacidadCantidadBaterias * 0.6) / - defitit)).toFixed(2);
+    
+
+    document.querySelector('#suministro-bateria').textContent = capacidadCantidadBaterias;
+    document.querySelector('#deficit').textContent = `Défitit / Superavit diario (con número positivo, serás autosuficiente) (Ah Diario ) = ${defitit} A/h Diario`;
+    document.querySelector('#dias').textContent = `Duración de la batería (Sin bajar del , límite para que la batería no sufra en exceso yse acabe rompiendo)  Dias = ${dias} Días.`;
+    document.querySelector('#capacidad-generacion').textContent = capacidadgeneracion;
+    document.querySelector('#capacidad-consumo').textContent = capacidadConsumo;
+
+
+
+
+
+
+}
 
