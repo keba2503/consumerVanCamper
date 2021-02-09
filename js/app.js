@@ -383,7 +383,7 @@ function capacidadBateria() {
 
     document.querySelector('#suministro-bateria').textContent = capacidadCantidadBaterias;
     document.querySelector('#deficit').textContent = `Défitit / Superavit diario (con número positivo, serás autosuficiente) (Ah Diario ) = ${defitit} A/h Diario`;
-    document.querySelector('#dias').textContent = `Duración de la batería (Sin bajar del , límite para que la batería no sufra en exceso yse acabe rompiendo)  Dias = ${dias} Días.`;
+    document.querySelector('#dias').textContent = ` Duración de la batería (Sin bajar del 40%, límite para que la batería no sufra en exceso y se acabe rompiendo)  Dias = ${dias} Días.`;
     document.querySelector('#capacidad-generacion').textContent = capacidadgeneracion;
     document.querySelector('#capacidad-consumo').textContent = capacidadConsumo;
 
